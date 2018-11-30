@@ -1,40 +1,15 @@
-package com.example.demo.entity;
+package nz.co.ctg.domain.model;
 
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import javax.persistence.CollectionTable;
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "category")
 public class Category {
-    @Id
-    @GeneratedValue
     private Long id;
-    @Column
     private String name;
-    @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "category_name")
-    @Column(name = "name")
     private Set<String> alternateNames;
 
     public Category() {
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Set<String> getAlternateNames() {
@@ -48,13 +23,16 @@ public class Category {
         return id;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(name);
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
@@ -70,5 +48,10 @@ public class Category {
         }
         Category other = (Category) obj;
         return Objects.equals(name, other.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }
