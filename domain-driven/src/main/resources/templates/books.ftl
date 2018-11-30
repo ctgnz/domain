@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>Books</title>
+</head>
+<body>
+<h2>Books</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>ISBN</th>
+				<th>Title</th>
+				<th>Authors</th>
+				<th>Categories</th>
+			</tr>
+		</thead>
+		<tbody>
+		<#list books as book>
+			<tr>
+				<td>${book.isbn}</td>
+				<td>${book.title}</td>
+				<td>${book.authorList}</td>
+				<td>${book.categoryList}</td>
+			</tr>
+		</#list>
+		</tbody>
+	</table>
+</body>
+</html>
