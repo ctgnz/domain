@@ -20,6 +20,12 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderColumn;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonPropertyOrder({ "id", "isbn", "catalogId", "title", "subtitle", "publicationDate", "authorList", "categoryList" })
 @Entity
 public class Book {
     @Id
@@ -47,6 +53,46 @@ public class Book {
     public Book() {
     }
 
+    public void addAuthor(Author author) {
+        if (!getAuthors().contains(author)) {
+            getAuthors().add(author);
+            author.addBook(this);
+        }
+    }
+
+    public void removeAuthor(Author author) {
+        if (getAuthors().contains(author)) {
+            getAuthors().remove(author);
+            author.removeBook(this);
+        }
+    }
+
+    @JsonProperty(access = Access.READ_ONLY)
+    public String getAuthorList() {
+        return getAuthors().stream().map(Author::getFullName).collect(joining(", "));
+    }
+
+    public void addCategory(Category category) {
+        getCategories().add(category);
+    }
+
+    public void removeCategory(Category category) {
+        getCategories().remove(category);
+    }
+
+    @JsonProperty(access = Access.READ_ONLY)
+    public String getCategoryList() {
+        return getCategories().stream().map(Category::getName).collect(joining(", "));
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -63,15 +109,7 @@ public class Book {
         this.subtitle = subtitle;
     }
 
-    public void addAuthor(Author author) {
-        getAuthors().add(author);
-        author.getBooks().add(this);
-    }
-
-    public String getAuthorList() {
-        return getAuthors().stream().map(Author::getFullName).collect(joining(", "));
-    }
-
+    @JsonIgnore
     public List<Author> getAuthors() {
         if (authors == null) {
             authors = new ArrayList<>();
@@ -103,10 +141,7 @@ public class Book {
         this.catalogId = catalogId;
     }
 
-    public String getCategoryList() {
-        return getCategories().stream().map(Category::getName).collect(joining(", "));
-    }
-
+    @JsonIgnore
     public Set<Category> getCategories() {
         if (categories == null) {
             categories = new HashSet<>();

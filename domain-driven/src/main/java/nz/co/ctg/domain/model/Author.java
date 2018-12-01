@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Author {
     @Id
@@ -26,6 +28,24 @@ public class Author {
     private Set<Book> books;
 
     public Author() {
+    }
+
+    public void addBook(Book book) {
+        getBooks().add(book);
+    }
+
+    public void removeBook(Book book) {
+        if (getBooks().contains(book)) {
+            getBooks().remove(book);
+        }
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -52,6 +72,7 @@ public class Author {
         this.fullName = fullName;
     }
 
+    @JsonIgnore
     public Set<Book> getBooks() {
         if (books == null) {
             books = new HashSet<>();
