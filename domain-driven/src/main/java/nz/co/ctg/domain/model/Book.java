@@ -1,4 +1,4 @@
-package com.example.demo.entity;
+package nz.co.ctg.domain.model;
 
 import static java.util.stream.Collectors.joining;
 

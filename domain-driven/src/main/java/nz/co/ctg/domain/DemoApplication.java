@@ -1,4 +1,4 @@
-package com.example.demo;
+package nz.co.ctg.domain;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

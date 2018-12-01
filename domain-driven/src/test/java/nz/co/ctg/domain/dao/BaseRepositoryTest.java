@@ -1,4 +1,4 @@
-package com.example.demo.dao;
+package nz.co.ctg.domain.dao;
 
 import javax.annotation.Resource;
 
@@ -8,9 +8,9 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.example.demo.entity.Author;
-import com.example.demo.entity.Book;
-import com.example.demo.entity.Category;
+import nz.co.ctg.domain.model.Author;
+import nz.co.ctg.domain.model.Book;
+import nz.co.ctg.domain.model.Category;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest(showSql = true)

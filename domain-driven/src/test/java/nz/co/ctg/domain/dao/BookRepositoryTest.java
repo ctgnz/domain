@@ -1,4 +1,4 @@
-package com.example.demo.dao;
+package nz.co.ctg.domain.dao;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -11,7 +11,8 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 
-import com.example.demo.entity.Book;
+import nz.co.ctg.domain.dao.BookRepository;
+import nz.co.ctg.domain.model.Book;
 
 public class BookRepositoryTest extends BaseRepositoryTest {
     @Resource

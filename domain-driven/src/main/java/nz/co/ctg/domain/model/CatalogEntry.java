@@ -1,4 +1,4 @@
-package com.example.demo.entity;
+package nz.co.ctg.domain.model;
 
 public class CatalogEntry {
     private Book book;

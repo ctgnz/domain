@@ -1,8 +1,8 @@
-package com.example.demo.dao;
+package nz.co.ctg.domain.dao;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.example.demo.entity.Category;
+import nz.co.ctg.domain.model.Category;
 
 public interface CategoryRepository extends CrudRepository<Category, Long> {
 }

@@ -1,4 +1,4 @@
-package com.example.demo.dao;
+package nz.co.ctg.domain.dao;
 
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.junit.Assert.assertThat;
@@ -9,7 +9,8 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 
-import com.example.demo.entity.Author;
+import nz.co.ctg.domain.dao.AuthorRepository;
+import nz.co.ctg.domain.model.Author;
 
 public class AuthorRepositoryTest extends BaseRepositoryTest {
     @Resource

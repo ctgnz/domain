@@ -1,4 +1,4 @@
-package com.example.demo;
+package nz.co.ctg.domain;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.example.demo.dao.BookRepository;
+import nz.co.ctg.domain.dao.BookRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
